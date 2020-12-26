@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Body Component should render without issues 1`] = `
+<ForwardRef(SafeAreaView)
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+  testID="SafeAreaBodyView"
+>
+  <QuickView
+    column={true}
+    primary={true}
+    style={
+      Object {
+        "backgroundColor": "#ffffff",
+        "paddingHorizontal": 18,
+      }
+    }
+  />
+</ForwardRef(SafeAreaView)>
+`;

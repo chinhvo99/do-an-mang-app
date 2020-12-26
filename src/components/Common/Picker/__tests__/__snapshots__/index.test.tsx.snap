@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Picker Component should render without issues 1`] = `
+<ForwardRef(Themed.Button)
+  buttonStyle={
+    Object {
+      "justifyContent": "space-between",
+    }
+  }
+  height={50}
+  icon={
+    Object {
+      "name": "caretdown",
+      "size": 15,
+      "type": "antdesign",
+    }
+  }
+  iconRight={true}
+  mode="dropdown"
+  onPress={[Function]}
+  rounded={true}
+  testID="PickerIOS"
+  titleProps={
+    Object {
+      "numberOfLines": 1,
+    }
+  }
+  titleStyle={
+    Object {
+      "maxWidth": 50,
+    }
+  }
+  width={100}
+/>
+`;
