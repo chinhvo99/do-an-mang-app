@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 class CategoryOutScreen extends PureComponent {
   async componentDidMount() {
     try {
-      const response = await get('http://192.168.1.3:3000/api/v1/categories?filter={"type":1}');
+      const response = await get('http://192.168.1.186:3000/api/v1/categories?filter={"type":1}');
       this.setState({
         categoryOut: response.results,
       });

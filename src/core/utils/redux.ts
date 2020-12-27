@@ -72,6 +72,7 @@ export type TQuery = {
   page?: number;
   limit?: number;
   orderBy?: string;
+  filter?: any;
 };
 
 export function createObjectReducer<T>(name: string, parentKey?: string, listKey?: string): T {
@@ -210,6 +211,9 @@ export function stringifyQuery(query: TQuery) {
   const handledQuery: any = _.omit(query, ['page']);
   handledQuery.offset = offset;
   handledQuery.limit = limit;
+  if (_.has(handledQuery, 'filter')) {
+    handledQuery.filter = JSON.stringify(handledQuery.filter);
+  }
   // eslint-disable-next-line max-len
   // const stringifiedQuery = queryString.stringify(_.pickBy(handledQuery, (item: any) => item !== ''), { arrayFormat: 'comma' });
   const stringifiedQuery = queryString.stringify(_.pickBy(handledQuery, (item: any) => item !== ''));

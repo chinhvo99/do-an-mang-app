@@ -52,13 +52,13 @@ class OutcomeScreen extends PureComponent<Props, State> {
   async componentDidMount() {
     const { navigation } = this.props;
     navigation.addListener('focus', async () => {
-      const { moneyAmount } = await get('http://192.168.1.3:3000/api/v1/users/me');
+      const { moneyAmount } = await get('http://192.168.1.186:3000/api/v1/users/me');
       this.setState({
         moneyAmount,
       });
     });
-    const response = await get('http://192.168.1.3:3000/api/v1/categories?filter={"type":2}');
-    const { moneyAmount } = await get('http://192.168.1.3:3000/api/v1/users/me');
+    const response = await get('http://192.168.1.186:3000/api/v1/categories?filter={"type":2}');
+    const { moneyAmount } = await get('http://192.168.1.186:3000/api/v1/users/me');
     this.setState({
       categories: response.results,
       moneyAmount,
@@ -77,7 +77,7 @@ class OutcomeScreen extends PureComponent<Props, State> {
       createdAt: date,
     };
     try {
-      const response = await post('http://192.168.1.3:3000/api/v1/transactions', payload);
+      const response = await post('http://192.168.1.186:3000/api/v1/transactions', payload);
       if (response.id) {
         NavigationService.navigate('HistoryStack', { screen: 'WalletStackIndex' });
       }

@@ -40,13 +40,13 @@ class CategoryScreen extends PureComponent {
 
   async componentDidMount() {
     try {
-      const response1 = await get('http://192.168.1.3:3000/api/v1/categories?filter={"type":1}');
+      const response1 = await get('http://192.168.1.186:3000/api/v1/categories?filter={"type":1}');
 
       this.setState({
         categoryIn: response1.results,
         categories: response1.results,
       });
-      const response2 = await get('http://192.168.1.3:3000/api/v1/categories?filter={"type":2}');
+      const response2 = await get('http://192.168.1.186:3000/api/v1/categories?filter={"type":2}');
       this.setState({
         categoryOut: response2.results,
       });
@@ -55,10 +55,10 @@ class CategoryScreen extends PureComponent {
     }
   }
 
-  handleNavigate = (item) => {
-    console.log(item);
+  handleNavigate = (item: any) => {
+    console.log('111', item.id);
 
-    NavigationService.navigate('CategoryDetailStack', { categoryId: 1 });
+    NavigationService.navigate('CategoryDetailStack', { categoryId: item.id });
   };
 
   render() {
@@ -82,22 +82,24 @@ class CategoryScreen extends PureComponent {
               keyExtractor={(item:any) => item.id + item.name}
               data={categories}
               renderItem={({ item }) => (
-                <LinearGradient
-                  style={styles.bannerInside}
-                  start={{ x: 0.2, y: 0 }}
-                  end={{ x: 1, y: 0 }}
-                  colors={item.type === 1 ? ['#37bc04', '#5bec88'] : ['#cc0e3b', '#b39197']}
-                >
-                  <QuickView row justifyContent="space-around">
-                    <Text bold color="#fff">
-                      {item.name}
-                      :
-                    </Text>
-                    <Text bold color="#fff">
-                      {item.description}
-                    </Text>
-                  </QuickView>
-                </LinearGradient>
+                <QuickView onPress={() => this.handleNavigate(item)}>
+                  <LinearGradient
+                    style={styles.bannerInside}
+                    start={{ x: 0.2, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    colors={item.type === 1 ? ['#37bc04', '#5bec88'] : ['#cc0e3b', '#b39197']}
+                  >
+                    <QuickView row justifyContent="space-around">
+                      <Text bold color="#fff">
+                        {item.name}
+                        :
+                      </Text>
+                      <Text bold color="#fff">
+                        {item.description}
+                      </Text>
+                    </QuickView>
+                  </LinearGradient>
+                </QuickView>
               )}
             />
           </ScrollView>
