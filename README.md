@@ -1,4 +1,4 @@
-# MarvelNative
+# App quản lý chi tiêu
 npm install
 
 => IOS: cd ios && pod install
